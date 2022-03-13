@@ -2,12 +2,22 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import OptionItem from './OptionItem'
-import { options } from '../utils/config'
+import { options, colors } from '../utils/config'
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+  background: white;
+  padding: 0.5rem 1rem 1rem;
+`
+
+const Title = styled.h1`
+  color: ${colors.blue};
+  font-family: 'BrandonGrotesque';
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 `
 
 export default () => {
@@ -26,6 +36,7 @@ export default () => {
 
   return (
     <Form>
+      <Title>Shotgun Start Nickname Inserter Options</Title>
       {options.map((option) => (
         <OptionItem
           option={option}

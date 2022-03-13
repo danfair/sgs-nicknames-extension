@@ -24,6 +24,9 @@ window.onload = function () {
           nickname.lastName ? ` ${nickname.lastName}` : ''
         }`,
         replace: generateNicknameText(nickname, mode),
+        filterElements: (element) => {
+          return !element?.classList?.contains('sgs-nicknames-inserter')
+        },
       })
     })
   })
