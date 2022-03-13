@@ -21,11 +21,11 @@ const Title = styled.h1`
 `
 
 export default () => {
-  const [mode, setMode] = useState('after')
+  const [mode, setMode] = useState('aka')
 
   useEffect(() => {
     chrome.storage?.sync.get(['sgsNicknamesMode'], (result) => {
-      setMode(result['sgsNicknamesMode'] || 'after')
+      setMode(result['sgsNicknamesMode'] || 'aka')
     })
   }, [])
 
