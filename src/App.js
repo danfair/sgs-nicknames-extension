@@ -13,7 +13,7 @@ export default function App() {
     chrome.storage.sync.get(['sgsNicknamesMode'], (result) => {
       setMode(result['sgsNicknamesMode'] || 'after')
     })
-  })
+  }, [])
 
   const handleModeChange = (e) => {
     console.log('storage', chrome.storage)
