@@ -1,5 +1,18 @@
 import findAndReplaceDOMText from '@thehonestscoop/findandreplacedomtext'
-import nicknames from '../nicknames.js'
+import nicknames from '../utils/nicknames.js'
+
+const generateNicknameText = (item, mode) => {
+  const { firstName, lastName, nickname } = item
+  switch (mode) {
+    case 'aka':
+      return `${firstName} ${lastName} (aka ${nickname})`
+    case 'middle':
+      return `${firstName} "${nickname}" ${lastName}`
+    case 'after':
+    default:
+      return `${firstName} ${lastName} (${nickname})`
+  }
+}
 
 window.onload = function () {
   const body = document.querySelector('body')
@@ -7,8 +20,10 @@ window.onload = function () {
     const mode = result['sgsNicknamesMode'] || 'after'
     nicknames.forEach((nickname) => {
       findAndReplaceDOMText(body, {
-        find: nickname.name,
-        replace: nickname[mode],
+        find: `${nickname.firstName}${
+          nickname.lastName ? ` ${nickname.lastName}` : ''
+        }`,
+        replace: generateNicknameText(nickname, mode),
       })
     })
   })
